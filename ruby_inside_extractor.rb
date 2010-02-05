@@ -6,15 +6,15 @@ require 'comment'
 
 class RubyInsideExtractor
   attr_reader :blog_posts
+  @@web_address = "http://www.rubyinside.com/"
   
   def initialize
     @blog_posts = []
-    @web_address = "http://www.rubyinside.com/"
   end
   
   def import!
     1.upto(page_count) do |page_number|
-      page_doc = Hpricot(open(@web_address + 'page/' + page_number.to_s))
+      page_doc = Hpricot(open(@@web_address + 'page/' + page_number.to_s))
       page_doc.search('.post.teaser').each do |entry_div|
         # we can access an element's attributes as if it were a Hash
         post_url = entry_div.at('h2 > a')['href']
@@ -51,11 +51,12 @@ class RubyInsideExtractor
   end
   
   def page_count
-    doc = Hpricot(open(@web_address))
-    doc.search("div.pagebar a")[-2].inner_text.to_i
+    doc = Hpricot(open(@@web_address))
+    last_page = doc.search("div.pagebar a")[-2].inner_text.to_i
     # the number of the last page is in the penultimate link
     # inside the div with the class “pagebar”
-
+    
+    # return last_page
     return 3 # we'll force a low number because it would be very
              # time consuming to extract all the 1060~ posts
   end

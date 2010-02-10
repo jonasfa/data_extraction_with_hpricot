@@ -52,12 +52,11 @@ class RubyInsideExtractor
   
   def page_count
     doc = Hpricot(open(@@web_address))
-    last_page = doc.search("div.pagebar a")[-2].inner_text.to_i
     # the number of the last page is in the penultimate link
-    # inside the div with the class “pagebar”
-    
-    # return last_page
-    return 3 # we'll force a low number because it would be very
-             # time consuming to extract all the 1060~ posts
+    # inside the div with the class "pagebar"
+    #return doc.search("div.pagebar a")[-2].inner_text.to_i
+
+    return 3 # we're forcing a low number because it would
+             # take long to extract all the 1060~ posts
   end
 end

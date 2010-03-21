@@ -6,6 +6,7 @@ ri_extractor.import!
 ri_extractor.blog_posts.each{ |post|
   puts post.title
   puts '=' * post.title.size
+  puts 'by ' + post.author
   puts
   puts post.text
   puts

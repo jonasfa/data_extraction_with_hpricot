@@ -30,6 +30,7 @@ class RubyInsideExtractor
 
     post_doc = Hpricot(open(post_url))
     blog_post.title = post_doc.at('.entryheader h1').inner_text
+    blog_post.author = post_doc.at('p.byline a').inner_text
     text_div = post_doc.at('.entrytext')
     text_div.search('noscript').remove # removing unwanted elements
     blog_post.text = text_div.inner_text.strip

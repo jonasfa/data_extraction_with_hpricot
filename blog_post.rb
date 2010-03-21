@@ -1,3 +1,3 @@
 class BlogPost
-  attr_accessor :title, :text, :comments
+  attr_accessor :title, :author, :text, :comments
 end

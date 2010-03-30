@@ -1,4 +1,6 @@
 Data Extraction With Hpricot
 
 This project was made while I was writing an article for the Rails Magazine.
+It's an example on how the Hpricot library works.
+
 Licensed under the New BSD license.
